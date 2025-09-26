@@ -42,6 +42,12 @@ export default defineConfig({
             type: "image/png",
             purpose: "maskable",
           },
+          {
+            src: "/icons/monochrome-icon-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "monochrome",
+          },
         ],
       },
       workbox: {
