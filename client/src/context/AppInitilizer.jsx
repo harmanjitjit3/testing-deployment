@@ -40,7 +40,6 @@ export default function AppInitializer({ children }) {
     socket.on("disconnect", () => dispatch(setConnected(false)));
 
     const handler = (payload) => {
-      console.log(payload);
 
       if (!payload) return;
 

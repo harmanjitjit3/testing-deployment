@@ -48,6 +48,10 @@ app.use("/api/v1/notifications", notificationRoute);
 // Admin Routes
 app.use("/api/v1/admin", adminRoute);
 
+app.get("/", (req, res) => {
+  res.send("Backend is running....");
+});
+
 process.on("uncaughtException", (error) => {
   console.error("Uncaught Exceprion");
   console.error(error);

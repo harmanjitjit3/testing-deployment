@@ -15,7 +15,7 @@ export default defineConfig({
         name: "xCHnG",
         short_name: "xCHnG",
         description: "POC App for Document Exchange",
-        theme_color: "#ffffff",
+        theme_color: "#171717",
         background_color: "#ffffff",
         display: "standalone",
         scope: "/",
@@ -49,10 +49,31 @@ export default defineConfig({
         runtimeCaching: [
           {
             urlPattern: ({ request }) => request.mode === "navigate",
-            handler: "NetworkFirst",
+            handler: "StaleWhileRevalidate",
             options: {
               cacheName: "pages-cache",
-              networkTimeoutSeconds: 3,
+            },
+          },
+          {
+            urlPattern: ({ request }) =>
+              request.destination === "script" ||
+              request.destination === "style" ||
+              request.destination === "worker",
+            handler: "StaleWhileRevalidate",
+            options: {
+              cacheName: "assets-cache",
+            },
+          },
+          {
+            urlPattern: ({ request }) =>
+              request.destination === "image" || request.destination === "font",
+            handler: "CacheFirst",
+            options: {
+              cacheName: "static-resources",
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 30 * 24 * 60 * 60,
+              },
             },
           },
         ],
