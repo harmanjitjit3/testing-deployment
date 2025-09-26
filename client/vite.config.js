@@ -10,7 +10,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.svg", "apple-touch-icon.png", "offline.html"],
+      includeAssets: ["favicon.svg", "apple-touch-icon.png"],
       manifest: {
         name: "xCHnG",
         short_name: "xCHnG",
@@ -49,9 +49,10 @@ export default defineConfig({
         runtimeCaching: [
           {
             urlPattern: ({ request }) => request.mode === "navigate",
-            handler: "StaleWhileRevalidate",
+            handler: "NetworkFirst",
             options: {
               cacheName: "pages-cache",
+              networkTimeoutSeconds: 3,
             },
           },
           {
@@ -77,7 +78,6 @@ export default defineConfig({
             },
           },
         ],
-        navigateFallback: "/offline.html",
       },
     }),
   ],
