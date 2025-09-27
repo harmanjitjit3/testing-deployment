@@ -1,0 +1,10 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.xchng.app",
+      "sha256_cert_fingerprints": ["82:8B:3D:B5:59:AB:57:84:FB:A1:91:CC:D8:14:C9:56:D0:BE:59:62:33:0E:75:11:3B:EE:45:D9:A1:78:CF:2B"]
+    }
+  }
+]
